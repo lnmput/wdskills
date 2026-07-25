@@ -1,0 +1,4 @@
+interface:
+  display_name: "提取商品详情 JSON"
+  short_description: "默认使用 ego 浏览器抓取并生成固定结构 JSON"
+  default_prompt: "使用 $extract-product-detail-json 通过 ego 浏览器提取这个商品详情页，并生成固定格式的 JSON 文件。"
