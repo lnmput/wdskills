@@ -1,0 +1,15 @@
+{
+  "name": "@yangzie/wdskills",
+  "version": "1.0.0",
+  "description": "Installer CLI for custom project-level and global skills in Google Antigravity / Gemini Coder.",
+  "type": "module",
+  "bin": {
+    "wdskills": "./bin/cli.js"
+  },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
