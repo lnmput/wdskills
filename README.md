@@ -27,7 +27,7 @@ npx @lnmput/wdskills
 ### 交互式选项说明
 运行命令后，安装器会引导您进行以下选择：
 1. **选择安装位置**：
-   * **Global (全局)**：安装到 `~/.gemini/config/skills/`，使所有项目中的 Agent 均可使用这些 Skills。
+   * **Global (全局)**：安装到 `~/.gemini/skills/`，使所有项目中的 Agent 均可使用这些 Skills。
    * **Workspace (工作区)**：安装到当前项目的 `./.agents/skills/`，仅对当前项目生效。
 2. **选择要安装的 Skills**：
    * 使用 **键盘上下键** 移动高亮。

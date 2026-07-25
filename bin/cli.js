@@ -63,37 +63,71 @@ async function run() {
 
   console.log('\x1b[32m%s\x1b[0m', `Found ${skills.length} skill(s) ready to install.\n`);
 
-  // 2. Ask user for destination
+  // 2. Ask user for destination directory
+  const destinationChoices = [];
+
+  // Add workspace option first
+  destinationChoices.push({
+    title: 'Workspace (Available only in this project)',
+    value: path.resolve(process.cwd(), '.agents/skills'),
+    description: './.agents/skills/'
+  });
+
+  // Detect and add all existing global directories
+  const globalPaths = [
+    { title: 'Global (Codex)', path: path.resolve(os.homedir(), '.codex/skills') },
+    { title: 'Global (Gemini)', path: path.resolve(os.homedir(), '.gemini/skills') },
+    { title: 'Global (Gemini Config)', path: path.resolve(os.homedir(), '.gemini/config/skills') }
+  ];
+
+  for (const gp of globalPaths) {
+    try {
+      await fs.access(gp.path);
+      destinationChoices.push({
+        title: gp.title,
+        value: gp.path,
+        description: gp.path.replace(os.homedir(), '~')
+      });
+    } catch {}
+  }
+
+  // Add custom path option
+  destinationChoices.push({
+    title: 'Custom Directory...',
+    value: 'custom',
+    description: 'Enter a custom absolute directory path manually'
+  });
+
   const targetResponse = await prompts({
     type: 'select',
-    name: 'destType',
+    name: 'destDir',
     message: 'Where would you like to install the skills?',
-    choices: [
-      { 
-        title: 'Global (Available in all workspaces)', 
-        value: 'global',
-        description: `~/.gemini/config/skills/`
-      },
-      { 
-        title: 'Workspace (Available only in this project)', 
-        value: 'workspace',
-        description: `./.agents/skills/`
-      }
-    ],
+    choices: destinationChoices,
     initial: 0
   });
 
-  if (!targetResponse.destType) {
+  if (!targetResponse.destDir) {
     console.log('Installation cancelled.');
     process.exit(0);
   }
 
   // Determine target path
-  let destDir = '';
-  if (targetResponse.destType === 'global') {
-    destDir = path.resolve(os.homedir(), '.gemini/config/skills');
-  } else {
-    destDir = path.resolve(process.cwd(), '.agents/skills');
+  let destDir = targetResponse.destDir;
+
+  if (destDir === 'custom') {
+    const customResponse = await prompts({
+      type: 'text',
+      name: 'customPath',
+      message: 'Enter the absolute path to the directory:',
+      validate: value => value ? true : 'Path cannot be empty'
+    });
+    
+    if (!customResponse.customPath) {
+      console.log('Installation cancelled.');
+      process.exit(0);
+    }
+    
+    destDir = path.resolve(customResponse.customPath.replace(/^~/, os.homedir()));
   }
 
   // 3. Ask user which skills to install
