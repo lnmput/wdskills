@@ -1,5 +1,5 @@
 {
-  "name": "@yangzie/wdskills",
+  "name": "@lnmput/wdskills",
   "version": "1.0.0",
   "description": "Installer CLI for custom project-level and global skills in Google Antigravity / Gemini Coder.",
   "type": "module",
