@@ -1,58 +1,45 @@
-# WdSkills Installer 🚀
+# WdSkills 🚀
 
-这是一个为 Google Antigravity / Gemini Coder 打造的自定义 Skills 交互式安装与更新工具。通过它，你可以一键将该项目下的所有自定义 Skills 安装到全局或特定项目的工作区中，并在后续轻松更新。
+这是一个为 Google Antigravity / Gemini Coder 打造的自定义 Agent Skills 集合项目。本项目内置了实用的电商及翻译辅助工具，并提供了一个一键安装器。
 
 ---
 
-## 📦 如何使用
+## 🛠️ 项目内置 Skills 介绍
 
-### 1. 运行安装器
-在本项目根目录下直接运行：
+本仓库目前包含以下核心 Agent Skills：
+
+1. **`korean-fashion-translator` (韩语时尚翻译与优化)**
+   * **功能**：自动将中文、英文或日文的时尚/服装类商品标题翻译为韩语，并针对韩国电商平台的可读性进行本土化优化。
+   
+2. **`extract-product-detail-json` (商品详情数据提取)**
+   * **功能**：通过内置的浏览器自动访问公共电商商品页面，解析并提取完整的商品信息（如价格、主图、详情图、规格、尺码等），最终保存为符合标准 Schema 的 JSON 数据。
+
+---
+
+## 📦 安装与使用方法
+
+您不需要手动下载或克隆本仓库的代码，只需在终端中运行以下 `npx` 命令，即可启动交互式安装器：
+
 ```bash
-npx .
+npx @lnmput/wdskills
 ```
 
-### 2. 交互式选项
-- **选择安装位置**：
-  - `Global (全局)`：安装到 `~/.gemini/config/skills/`，使所有项目/工作区中的 Agent 均可加载这些 Skills。
-  - `Workspace (工作区)`：安装到当前项目的 `./.agents/skills/`，仅在当前项目生效。
-- **选择安装的 Skills**：使用 **键盘上下键** 移动，**空格键** 勾选/取消勾选，**回车键** 确认安装。
+### 交互式选项说明
+运行命令后，安装器会引导您进行以下选择：
+1. **选择安装位置**：
+   * **Global (全局)**：安装到 `~/.gemini/config/skills/`，使所有项目中的 Agent 均可使用这些 Skills。
+   * **Workspace (工作区)**：安装到当前项目的 `./.agents/skills/`，仅对当前项目生效。
+2. **选择要安装的 Skills**：
+   * 使用 **键盘上下键** 移动高亮。
+   * 按 **空格键** 勾选/取消勾选要安装的项。
+   * 按 **回车键** 确认并执行安装。
 
 ---
 
-## 🌐 共享给他人使用
+## 🔄 如何更新
 
-你可以通过以下两种方式将这些 Skills 分享给团队或社区：
+当本仓库的 Skills 发布新版本或修复问题后，您只需在终端运行以下命令，即可强制拉取最新版本并覆盖更新本地的 Skills：
 
-### 方式 A：直接通过 GitHub 运行（最简单，免发布）
-如果你将该项目上传到了公共 GitHub 仓库（例如 `github.com/your-username/wdskills`），其他人无需下载代码，直接在他们的终端运行以下命令即可：
 ```bash
-npx github:your-username/wdskills
-```
-*提示：后续当你在 GitHub 上更新了 Skills 之后，他们再次运行该命令，即可自动拉取最新代码并覆盖更新本地 Skills。*
-
-### 方式 B：发布到 npm 注册表
-1. 修改 `package.json` 中的 `"name"` 字段为你的包名（如 `wdskills` 或你的 Scope 包名 `@your-scope/wdskills`）。
-2. 在项目根目录执行发布：
-   ```bash
-   npm publish --access public
-   ```
-3. 其他人只需运行：
-   ```bash
-   npx @lnmput/wdskills
-   ```
-   *提示：需要更新时，运行 `npx @lnmput/wdskills@latest` 即可获取最新版本并覆盖更新。*
-
----
-
-## 🛠️ 项目结构
-```text
-.
-├── bin/
-│   └── cli.js                     # 交互式安装器脚本
-├── extract-product-detail-json/   # 自定义 Skill A
-│   └── SKILL.md
-├── korean-fashion-translator/     # 自定义 Skill B
-│   └── SKILL.md
-└── package.json                   # 模块配置
+npx @lnmput/wdskills@latest
 ```
