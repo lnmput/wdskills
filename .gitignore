@@ -51,6 +51,9 @@ coverage/
 dist/
 build/Release
 
+# Generated artifacts
+/output/
+
 # TypeScript cache
 *.tsbuildinfo
 
