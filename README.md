@@ -2,6 +2,8 @@
 
 这是一个为 Google Antigravity / Gemini Coder 打造的自定义 Agent Skills 集合项目。本项目内置了实用的电商及翻译辅助工具，并提供了一个一键安装器。
 
+Codex本地开发采用“仓库源码 + 全局符号链接”模式。Skill更新或新建完成后只需运行`make update`，详见[Skill开发与Codex更新](docs/skill-development.md)。
+
 ---
 
 ## 🛠️ 项目内置 Skills 介绍
