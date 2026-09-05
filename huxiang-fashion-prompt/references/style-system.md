@@ -53,22 +53,31 @@ Choose one concrete camera language:
 
 Avoid mixing incompatible camera claims. Do not request iPhone native and DSLR compression in the same prompt.
 
-## Mandatory Props Rule (Verified)
+## Context-Dependent Prop Rule
 
-For European-old-town / coffee-run street style requests (the domain this was verified in), the user's working template always requires the subject to carry specific props, which noticeably improves how natural and "styled" the scene reads compared to leaving props optional:
+Prop choice should follow the outfit and implied life context, not be a fixed requirement. The original working template's coffee-cup-and-bag combination was verified for one specific context — a tailored, office/commute-style outfit (sweater vest, collared shirt, structured trousers) — and reads as natural there. Applying the same coffee-cup default to every outfit is a mistake: on a homemaker or casual-daily look it reads as staged/campaign-like rather than candid.
+
+Decide props from the outfit's implied context:
 
 ```text
-Regardless of the uploaded outfit, the subject must always carry a paper coffee cup.
-The subject must always carry a bag.
-The subject must also wear either sunglasses OR a low-pulled baseball cap covering most of the upper face and brows.
-Bag, sunglasses, or cap color should coordinate naturally with the uploaded outfit — prefer restrained neutral tones (black, brown, beige, cream, grey, muted olive).
-Optional extra hand-held item: an English-language newspaper.
+Read the outfit's implied context before choosing props: tailored/office-adjacent pieces (blazers, collared shirts, structured trousers, polished sneakers or loafers) suggest a commute or work-break moment; soft/loose loungewear, simple daily basics, or an at-home-adjacent look suggest a domestic errand or casual outing instead. Match the prop choice to that context rather than defaulting to the same prop every time.
+```
+
+**PROP MATRIX** (pick one option matching the outfit's context, or none — empty hands are also valid and often more natural):
+
+- Office/commute-coded outfit: paper coffee cup + structured bag; sunglasses optional.
+- Casual daily / homemaker-coded outfit: phone in hand, a tote or crossbody bag, an umbrella (if the scene calls for overcast or light rain), a book or magazine, light everyday shopping in a cloth bag, or nothing held at all.
+- Errand-coded outfit (simple top, jeans, sneakers): phone + small bag is usually enough; avoid coffee cup and sunglasses unless the outfit itself reads as polished.
+- When uncertain, empty hands (just a bag on the shoulder) is a safe, natural default — not every candid photo needs a hand-held prop.
+
+```text
+Regardless of which prop is chosen, bag/phone/umbrella/book colors should coordinate naturally with the outfit — prefer restrained neutral tones (black, brown, beige, cream, grey, muted olive).
 Do not introduce loud logos, bright colors, or attention-stealing accessories.
 ```
 
-Chinese original: `无论上传的服装如何，受试者必须始终携带一个纸质咖啡杯。受试者必须始终携带一个包。受试者还必须佩戴太阳镜 或 一顶拉得很低的棒球帽...`
+Sunglasses or a low-pulled cap remain a reasonable default across most contexts as a face-styling choice (not a hand-held prop), but skip them too if the outfit or mood calls for a bare, unguarded look.
 
-Apply this prop rule by default for this scene family; adapt or drop it when the user's request is for a different domain (studio product shot, a different city/season, no-props brief).
+Chinese original of the verified office-context version (use only when the outfit reads as office/commute): `无论上传的服装如何，受试者必须始终携带一个纸质咖啡杯。受试者必须始终携带一个包。受试者还必须佩戴太阳镜 或 一顶拉得很低的棒球帽...`
 
 ## Verified Matrix Library (User's Production Template)
 
@@ -122,7 +131,7 @@ These are the user's own tested matrix options for the European-old-town coffee-
 7. Passing a parked car, wind moving garment edges.
 8. Carrying coffee plus an English newspaper, bag still in frame.
 
-**ACCESSORY MATRIX** (pick one):
+**ACCESSORY MATRIX** (pick one — this list assumes an office/commute-coded outfit; for a casual or homemaker-coded outfit, use the Context-Dependent Prop Rule above instead):
 1. Sunglasses + structured leather bag + paper coffee cup.
 2. Large dark sunglasses + compact bag + paper coffee cup.
 3. Low-pulled baseball cap + leather shoulder bag + paper coffee cup.
@@ -178,7 +187,7 @@ These follow the same design standard as the Verified Matrix Library above (conc
 5. Adjusting a scarf or collar while walking through a narrow alley.
 6. Crossing a small stone bridge over a canal.
 
-**ACCESSORY MATRIX** (pick one) — apply the Mandatory Props Rule above, adapted to local props:
+**ACCESSORY MATRIX** (pick one, matched to outfit context) — apply the Context-Dependent Prop Rule above, adapted to local props:
 1. Sunglasses + canvas tote bag + paper coffee cup.
 2. Low-pulled cap + crossbody bag + a canned or bottled drink in hand.
 3. Sunglasses + structured leather bag + a convenience-store coffee cup.
@@ -225,7 +234,7 @@ These follow the same design standard as the Verified Matrix Library above (conc
 5. Adjusting sunglasses while walking past a brick facade.
 6. Crossing a quiet residential alley past parked scooters.
 
-**ACCESSORY MATRIX** (pick one) — apply the Mandatory Props Rule above:
+**ACCESSORY MATRIX** (pick one, matched to outfit context) — apply the Context-Dependent Prop Rule above:
 1. Sunglasses + crossbody bag + takeaway coffee cup.
 2. Low-pulled cap + canvas tote + takeaway coffee cup.
 3. Sunglasses + structured mini bag + takeaway coffee cup.
@@ -424,4 +433,4 @@ Before returning the prompt, verify:
 - Negative constraints are specific and not a generic word dump.
 - If this is a video first frame: subject frame-share is 60-70% (not edge-to-edge, not a tiny background element), and headroom/footroom of roughly 15-20% each are present.
 - Every full-body or near-full-body prompt includes the explicit frame-share/margin line (not just generic "full-body, low angle" language) and the matching feet/head-crop negative — vague framing language alone has produced inconsistent results (verified).
-- For the coffee-run street style domain: matrices are drawn from the verified library (not ad-hoc invented options), the default identity wording matches the verified text exactly when no FACE_REF is given, and the mandatory props rule is applied.
+- For the coffee-run / Japan / Korea street style domains: matrices are drawn from the verified or extended library (not ad-hoc invented options), the default identity wording matches the verified text exactly when no FACE_REF is given, and prop choice matches the outfit's implied context (office/commute vs. casual/homemaker/errand) rather than defaulting to the same coffee-cup combo regardless of outfit.

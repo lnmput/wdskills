@@ -21,7 +21,7 @@ Default to producing one copy-pasteable final prompt. Ask a question only when t
    - `OUTFIT_REF` is the wardrobe authority when clothing fidelity matters.
    - `FACE_REF` is optional by default, but becomes the identity authority when provided.
    - If no `FACE_REF` is provided, use the verified default identity wording in `references/style-system.md` (Default Identity Pattern) exactly rather than paraphrasing it — do not add facial or beauty descriptors beyond it.
-   - For the coffee-run street style domain, apply the verified Mandatory Props Rule (coffee cup, bag, sunglasses or low-pulled cap) from `references/style-system.md` unless the user's request is a different domain.
+   - Read the outfit's implied context before choosing props: office/commute-coded outfits pair naturally with the verified coffee-cup-and-bag combo; casual, homemaker-, or errand-coded outfits should instead use phone, umbrella, book, light shopping, or nothing at all — see the Context-Dependent Prop Rule in `references/style-system.md`. Do not default to the coffee cup across every outfit.
    - State that reference images override conflicting text.
 3. Define the photographic spine:
    - One image only.
